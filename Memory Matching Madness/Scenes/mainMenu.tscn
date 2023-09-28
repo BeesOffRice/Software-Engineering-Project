@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cufd7ocxlkf26"]
-
-[ext_resource type="Theme" uid="uid://daiaoav5l0g38" path="res://Theme.tres" id="1_gwk8k"]
+[gd_scene format=3 uid="uid://btqme6oqe5htg"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -33,17 +31,29 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-theme = ExtResource("1_gwk8k")
-theme_override_font_sizes/font_size = 58
 text = "Memory Matching Madness
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MenuButtons" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
-theme = ExtResource("1_gwk8k")
-text = "Start
+size_flags_vertical = 3
+
+[node name="New Game" type="Button" parent="MarginContainer/VBoxContainer/MenuButtons"]
+layout_mode = 2
+text = "New Game"
+
+[node name="How To Play" type="Button" parent="MarginContainer/VBoxContainer/MenuButtons"]
+layout_mode = 2
+text = "How To Play"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/MenuButtons"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Exit Game" type="Button" parent="MarginContainer/VBoxContainer/MenuButtons"]
+layout_mode = 2
+text = "Exit Game
 "
