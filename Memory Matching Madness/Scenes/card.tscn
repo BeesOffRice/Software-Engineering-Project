@@ -33,5 +33,4 @@ valueContainer = NodePath("../../ColorRect")
 script = ExtResource("4_66rhj")
 valueContainer = NodePath("../../ColorRect")
 
-[connection signal="input_event" from="." to="StateMachine/CardDown" method="_on_card_input_event"]
-[connection signal="input_event" from="." to="StateMachine/CardUp" method="_on_card_input_event"]
+[connection signal="input_event" from="." to="StateMachine" method="_on_card_input_event"]

@@ -14,3 +14,6 @@ func Exit():
 
 func Update(_delta:float):
 	pass
+	
+func Input():
+	pass
