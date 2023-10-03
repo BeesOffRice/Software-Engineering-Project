@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://pyfpsm0s1bya"]
+
+[ext_resource type="Script" path="res://scripts/card.gd" id="1_g3xbx"]
+[ext_resource type="Script" path="res://Scenes/StateMachine.gd" id="2_ww3xl"]
+[ext_resource type="Script" path="res://CardDown.gd" id="3_e1ovc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3a2k"]
+size = Vector2(200, 280)
+
+[node name="card" type="Area2D"]
+script = ExtResource("1_g3xbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(100, 140)
+shape = SubResource("RectangleShape2D_o3a2k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 280)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("2_ww3xl")
+
+[node name="CardDown" type="Node" parent="StateMachine"]
+script = ExtResource("3_e1ovc")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

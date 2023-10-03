@@ -1,0 +1,45 @@
+extends Node2D
+
+@export var initialState:CardState 
+
+var currentState : CardState
+var states: Dictionary={}
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	#checks all children of the state machine node and adds them to the state dictionary
+	for child in get_children():
+		if child is CardState:
+			states[child.name.to_lower()]=child
+			child.Transitioned.connect(on_child_transition)
+	
+	#checks if initial state exists, and then enters it
+	if initialState:
+		initialState.Enter()
+		currentState = initialState
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if currentState:
+		currentState.Update(delta)
+		
+func on_child_transition(state,newStateName):
+	#checks if state calling this isnt the current state
+	print(state)
+	if state!=currentState:
+		return
+		
+	#gets the state that you want to change to and checks if it exists
+	var newState = states.get(newStateName.to_lower())
+	if not newState:
+		return
+	
+	#exits the state you changed from
+	if currentState:
+		currentState.Exit()
+	
+	#enters the new state and officially changes current state to new state	
+	newState.Enter()	
+	currentState = newState
+	
+		

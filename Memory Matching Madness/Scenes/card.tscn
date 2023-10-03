@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://pyfpsm0s1bya"]
+
+[ext_resource type="Script" path="res://Scenes/card.gd" id="1_x7s1u"]
+[ext_resource type="Script" path="res://Scenes/StateMachine.gd" id="2_ww3xl"]
+[ext_resource type="Script" path="res://CardDown.gd" id="3_e1ovc"]
+[ext_resource type="Script" path="res://CardUp.gd" id="4_66rhj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3a2k"]
+size = Vector2(200, 280)
+
+[node name="card" type="Area2D"]
+script = ExtResource("1_x7s1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(100, 140)
+shape = SubResource("RectangleShape2D_o3a2k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 280)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("2_ww3xl")
+initialState = NodePath("CardDown")
+
+[node name="CardDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("valueContainer")]
+script = ExtResource("3_e1ovc")
+valueContainer = NodePath("../../ColorRect")
+
+[node name="CardUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("valueContainer")]
+script = ExtResource("4_66rhj")
+valueContainer = NodePath("../../ColorRect")
+
+[connection signal="input_event" from="." to="StateMachine/CardDown" method="_on_card_input_event"]
+[connection signal="input_event" from="." to="StateMachine/CardUp" method="_on_card_input_event"]
