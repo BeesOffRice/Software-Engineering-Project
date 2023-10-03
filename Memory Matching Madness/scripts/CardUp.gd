@@ -9,7 +9,8 @@ func setCardValues():
 func Enter():
 	setCardValues()
 	valueContainer.set_color(cardObj.cardValue)
+	CardUpdated.emit(cardObj)
 
 func Input():
 	Transitioned.emit(self,"carddown")
-	print("up running")
+	

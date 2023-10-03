@@ -10,3 +10,6 @@ func _init(flip,value):
 	self.isFlipped=flip
 	self.cardValue=value
 		
+		
+func checkFlip():
+	return isFlipped

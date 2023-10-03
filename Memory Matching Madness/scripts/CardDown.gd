@@ -9,12 +9,14 @@ var cardObj: Card
 func setCardValues():
 	cardObj = Card.new(false,Color(Color.BLACK))
 	
+	
 func Enter():
 	setCardValues()
 	if valueContainer:
 		valueContainer.set_color(cardObj.cardValue)
+		CardUpdated.emit(cardObj)
 	
 
 func Input():
 	Transitioned.emit(self,"cardup")
-	print("down runnign")
+	

@@ -3,6 +3,7 @@ extends Node
 class_name CardState
 
 signal Transitioned
+signal CardUpdated
 
 #entering the state
 func Enter():

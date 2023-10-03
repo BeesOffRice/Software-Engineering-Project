@@ -2,6 +2,7 @@ extends Node2D
 
 @export var initialState:CardState 
 
+var currentCard : Card
 var currentState : CardState
 var states: Dictionary={}
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +28,6 @@ func _process(delta):
 		
 func on_child_transition(state,newStateName):
 	#checks if state calling this isnt the current state
-	print(state)
 	if state!=currentState:
 		return
 		
