@@ -14,8 +14,8 @@ func Enter():
 	setCardValues()
 	if valueContainer:
 		valueContainer.set_color(cardObj.cardValue)
-		CardUpdated.emit(cardObj)
-	
+		CardUpdated.emit(cardObj,self)
+
 
 func Input():
 	Transitioned.emit(self,"cardup")

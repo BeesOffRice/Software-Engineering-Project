@@ -24,7 +24,6 @@ func _process(delta):
 	if currentState:
 		currentState.Update(delta)
 		
-
 		
 func on_child_transition(state,newStateName):
 	#checks if state calling this isnt the current state
@@ -43,12 +42,14 @@ func on_child_transition(state,newStateName):
 	#enters the new state and officially changes current state to new state	
 	newState.Enter()	
 	currentState = newState
-	
-		
 
-
+#flips card when it is clicked
 func _on_card_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if(currentState):
 				currentState.Input()
+
+
+func _on_flip_timer_timeout():
+	currentState.Timeout()

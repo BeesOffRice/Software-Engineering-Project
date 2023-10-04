@@ -4,7 +4,7 @@ class_name Card
 
 var isFlipped: bool 
 var cardValue: Color  
-var isMatched: bool
+var isMatched: bool = false
 
 func _init(flip,value):
 	self.isFlipped=flip

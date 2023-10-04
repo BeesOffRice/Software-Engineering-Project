@@ -1,5 +1,7 @@
 extends Area2D
-var currentCard: Card = Card.new(false,Color.BLACK)
+@export var cardVal: Color
+var currentCard: Card = Card.new(false,cardVal)
+var canFlip: bool
 signal CardClicked
 
 # Called when the node enters the scene tree for the first time.
@@ -12,11 +14,21 @@ func _ready():
 func _process(delta):
 	pass
 
-func setPos(pos):
+#flips a card so it is facedown
+func flipDown():
+	$StateMachine.changeDown()
+
+
+func setPos(pos,col):
+	cardVal=col
 	position=pos
 	
-func _on_card_update(cardObj):
-	currentCard = cardObj
-	currentCard.name="some name"
-	CardClicked.emit(1)
-	
+func _on_card_update(cardObj,cardState):
+	currentCard= cardObj
+	if cardState == get_node("StateMachine/CardUp"):
+		currentCard.name="face up card"
+		CardClicked.emit(1,self)
+
+
+func _on_card_up_matched():
+	$FlipTimer.start()
