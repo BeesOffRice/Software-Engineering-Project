@@ -2,21 +2,18 @@ extends CardState
 
 class_name CardDown
 
-@export var valueContainer: ColorRect
-
-var cardObj: Card
+@export var card: Area2D
+@export var colorDisplay:ColorRect
 
 func setCardValues():
-	cardObj = Card.new(false,Color(Color.BLACK))
-	
+	colorDisplay.set_color(card.cardBack);
+	card.setFlipped(false);
 	
 func Enter():
 	setCardValues()
-	if valueContainer:
-		valueContainer.set_color(cardObj.cardValue)
-		CardUpdated.emit(cardObj,self)
 
 
 func Input():
+	CardClicked.emit(1)
 	Transitioned.emit(self,"cardup")
 	

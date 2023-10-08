@@ -1,34 +1,32 @@
 extends Area2D
-@export var cardVal: Color
-var currentCard: Card = Card.new(false,cardVal)
-var canFlip: bool
 signal CardClicked
 
+var isFlipped: bool = false
+@export var cardValue: Color  
+var cardBack: Color = Color(Color.BLACK);
+var isMatched: bool = false;
+var canFlip: bool = true;
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$StateMachine/CardDown.CardUpdated.connect(_on_card_update)
-	$StateMachine/CardUp.CardUpdated.connect(_on_card_update)
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-#flips a card so it is facedown
-func flipDown():
-	$StateMachine.changeDown()
-
+func setFlipped(val):
+	isFlipped=val
+	
+func getisMatched():
+	return isMatched
 
 func setPos(pos,col):
-	cardVal=col
 	position=pos
-	
-func _on_card_update(cardObj,cardState):
-	currentCard= cardObj
-	if cardState == get_node("StateMachine/CardUp"):
-		currentCard.name="face up card"
-		CardClicked.emit(1,self)
-
+	cardValue=col
 
 func _on_card_up_matched():
 	$FlipTimer.start()
+
+
+func _on_card_down_card_clicked(num):
+	CardClicked.emit(num,self)

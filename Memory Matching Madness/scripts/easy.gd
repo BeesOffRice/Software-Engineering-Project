@@ -67,11 +67,11 @@ func _on_max_cards_flipped():
 	else:
 		flipCount=0
 		for c in cards:
-			c.currentCard.isMatched=true
+			c.isMatched=true
 		cards.clear()
 	
 #checks if the cards chosen match
 func checkMatch():
-	print(cards[0].currentCard.cardValue)
-	print(cards[1].currentCard.cardValue)
-	return cards[0].currentCard.cardValue == cards[1].currentCard.cardValue
+	print(cards[0].getisMatched())
+	print(cards[1].getisMatched())
+	return cards[0].cardValue == cards[1].cardValue

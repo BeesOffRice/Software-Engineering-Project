@@ -11,7 +11,7 @@ size = Vector2(200, 280)
 
 [node name="card" type="Area2D"]
 script = ExtResource("1_x7s1u")
-cardVal = Color(0.345098, 0.521569, 0.87451, 1)
+cardValue = Color(1, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(100, 140)
@@ -27,18 +27,20 @@ mouse_filter = 2
 script = ExtResource("2_eb8lx")
 initialState = NodePath("CardDown")
 
-[node name="CardDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("valueContainer")]
+[node name="CardDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("card", "colorDisplay")]
 script = ExtResource("3_44wqf")
-valueContainer = NodePath("../../ColorRect")
+card = NodePath("../..")
+colorDisplay = NodePath("../../ColorRect")
 
-[node name="CardUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("valueContainer", "selfCard")]
+[node name="CardUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("card", "cardDisplay")]
 script = ExtResource("4_lp3ga")
-valueContainer = NodePath("../../ColorRect")
-selfCard = NodePath("../..")
+card = NodePath("../..")
+cardDisplay = NodePath("../../ColorRect")
 
 [node name="FlipTimer" type="Timer" parent="."]
 script = ExtResource("5_jp7mg")
 
 [connection signal="input_event" from="." to="StateMachine" method="_on_card_input_event"]
+[connection signal="CardClicked" from="StateMachine/CardDown" to="." method="_on_card_down_card_clicked"]
 [connection signal="Matched" from="StateMachine/CardUp" to="." method="_on_card_up_matched"]
 [connection signal="timeout" from="FlipTimer" to="StateMachine" method="_on_flip_timer_timeout"]

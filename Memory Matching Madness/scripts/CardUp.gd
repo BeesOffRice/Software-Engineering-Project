@@ -1,23 +1,20 @@
 extends CardState
 class_name CardUp
-@export var valueContainer : ColorRect
-@export var selfCard :Area2D
-var cardObj :Card 
+@export var card :Area2D
+@export var cardDisplay:ColorRect
 #variable that toggles whether or not the timer can be started
 var toggle = true
 signal Matched
 
 func setCardValues():
-	cardObj = selfCard.currentCard
-	cardObj = Card.new(true,selfCard.cardVal)
+	cardDisplay.set_color(card.cardValue);
+	card.setFlipped(true);
 	
 func Enter():
 	setCardValues()
-	valueContainer.set_color(cardObj.cardValue)
-	CardUpdated.emit(cardObj,self)
 	
 func Update(_delta):
-	if selfCard.currentCard.isMatched and toggle:
+	if card.isMatched and toggle:
 		Matched.emit()
 		toggle = false
 
