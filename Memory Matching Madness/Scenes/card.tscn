@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://pyfpsm0s1bya"]
+[gd_scene load_steps=6 format=3 uid="uid://pyfpsm0s1bya"]
 
 [ext_resource type="Script" path="res://Scenes/card.gd" id="1_x7s1u"]
 [ext_resource type="Script" path="res://scripts/StateMachine.gd" id="2_eb8lx"]
 [ext_resource type="Script" path="res://scripts/CardDown.gd" id="3_44wqf"]
 [ext_resource type="Script" path="res://scripts/CardUp.gd" id="4_lp3ga"]
-[ext_resource type="Script" path="res://Scenes/FlipTimer.gd" id="5_jp7mg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3a2k"]
 size = Vector2(200, 280)
@@ -23,8 +22,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initialState")]
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("card", "initialState")]
 script = ExtResource("2_eb8lx")
+card = NodePath("..")
 initialState = NodePath("CardDown")
 
 [node name="CardDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("card", "colorDisplay")]
@@ -37,10 +37,6 @@ script = ExtResource("4_lp3ga")
 card = NodePath("../..")
 cardDisplay = NodePath("../../ColorRect")
 
-[node name="FlipTimer" type="Timer" parent="."]
-script = ExtResource("5_jp7mg")
-
 [connection signal="input_event" from="." to="StateMachine" method="_on_card_input_event"]
 [connection signal="CardClicked" from="StateMachine/CardDown" to="." method="_on_card_down_card_clicked"]
 [connection signal="Matched" from="StateMachine/CardUp" to="." method="_on_card_up_matched"]
-[connection signal="timeout" from="FlipTimer" to="StateMachine" method="_on_flip_timer_timeout"]

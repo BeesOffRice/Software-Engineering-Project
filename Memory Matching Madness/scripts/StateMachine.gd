@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var card: Area2D
 @export var initialState:CardState 
 
 var currentState : CardState
@@ -23,6 +24,16 @@ func _process(delta):
 	if currentState:
 		currentState.Update(delta)
 		
+#manually change states
+func changeState(stateName):
+	var newState = states.get(stateName.to_lower())
+	if not newState:
+		return
+	if currentState:
+		currentState.Exit()
+	newState.Enter()
+	currentState=newState
+	
 		
 func on_child_transition(state,newStateName):
 	#checks if state calling this isnt the current state
@@ -44,11 +55,8 @@ func on_child_transition(state,newStateName):
 
 #flips card when it is clicked
 func _on_card_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and card.canFlip:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if(currentState):
 				currentState.Input()
 
-
-func _on_flip_timer_timeout():
-	currentState.Timeout()

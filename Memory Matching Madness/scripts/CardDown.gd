@@ -9,6 +9,7 @@ func setCardValues():
 	colorDisplay.set_color(card.cardBack);
 	card.setFlipped(false);
 	
+	
 func Enter():
 	setCardValues()
 

@@ -18,6 +18,3 @@ func Update(_delta:float):
 	
 func Input():
 	pass
-
-func Timeout():
-	pass

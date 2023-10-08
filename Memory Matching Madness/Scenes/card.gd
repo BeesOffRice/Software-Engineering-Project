@@ -13,10 +13,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func flipDown():
+	$StateMachine.changeState("carddown")
 
 func setFlipped(val):
 	isFlipped=val
 	
+func setClickable(val):
+	canFlip = val
+
 func getisMatched():
 	return isMatched
 
@@ -24,9 +30,7 @@ func setPos(pos,col):
 	position=pos
 	cardValue=col
 
-func _on_card_up_matched():
-	$FlipTimer.start()
-
-
+#sends the card and the number 1 to be handled by the game scene
 func _on_card_down_card_clicked(num):
-	CardClicked.emit(num,self)
+	if canFlip:
+		CardClicked.emit(num,self)
