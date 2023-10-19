@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://pyfpsm0s1bya"]
 
-[ext_resource type="Script" path="res://Scenes/card.gd" id="1_x7s1u"]
+[ext_resource type="Script" path="res://scripts/card.gd" id="1_n5tf8"]
 [ext_resource type="Script" path="res://scripts/StateMachine.gd" id="2_eb8lx"]
 [ext_resource type="Script" path="res://scripts/CardDown.gd" id="3_44wqf"]
 [ext_resource type="Script" path="res://scripts/CardUp.gd" id="4_lp3ga"]
@@ -9,7 +9,7 @@
 size = Vector2(200, 280)
 
 [node name="card" type="Area2D"]
-script = ExtResource("1_x7s1u")
+script = ExtResource("1_n5tf8")
 cardValue = Color(1, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
