@@ -6,23 +6,21 @@
 [ext_resource type="Script" path="res://scripts/CardUp.gd" id="4_lp3ga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3a2k"]
-size = Vector2(40, 56)
+size = Vector2(200, 280)
 
 [node name="card" type="Area2D"]
 script = ExtResource("1_n5tf8")
 cardValue = Color(1, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, 28)
+position = Vector2(100, 140)
 shape = SubResource("RectangleShape2D_o3a2k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(5, 7)
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(1, 1.4)
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("card", "initialState")]
 script = ExtResource("2_eb8lx")

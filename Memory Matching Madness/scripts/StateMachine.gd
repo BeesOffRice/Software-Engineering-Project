@@ -29,8 +29,10 @@ func changeState(stateName):
 	var newState = states.get(stateName.to_lower())
 	if not newState:
 		return
+		
 	if currentState:
 		currentState.Exit()
+		
 	newState.Enter()
 	currentState=newState
 	

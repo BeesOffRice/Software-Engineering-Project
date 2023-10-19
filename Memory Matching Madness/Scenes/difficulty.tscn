@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ncevpsmf256n"]
+
+[ext_resource type="Script" path="res://scripts/easy.gd" id="1_3wn7g"]
+[ext_resource type="Script" path="res://scripts/difficultyController.gd" id="1_a0yc5"]
+[ext_resource type="Script" path="res://normal.gd" id="3_84bv2"]
+[ext_resource type="Script" path="res://scripts/hard.gd" id="4_so11y"]
+
+[node name="Difficulty" type="Node"]
+script = ExtResource("1_a0yc5")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.756863, 0.490196, 0.576471, 1)
+
+[node name="easy" type="Node2D" parent="."]
+script = ExtResource("1_3wn7g")
+
+[node name="normal" type="Node2D" parent="."]
+script = ExtResource("3_84bv2")
+
+[node name="hard" type="Node2D" parent="."]
+script = ExtResource("4_so11y")

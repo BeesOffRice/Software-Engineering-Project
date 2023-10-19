@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bblpfhfrebts8"]
 
-[ext_resource type="PackedScene" uid="uid://ncevpsmf256n" path="res://Scenes/easy.tscn" id="1_3g372"]
+[ext_resource type="PackedScene" uid="uid://ncevpsmf256n" path="res://Scenes/difficulty.tscn" id="1_3g372"]
 [ext_resource type="Script" path="res://scripts/SubViewport.gd" id="1_yrb0n"]
 
 [node name="gameLayout" type="Control"]
@@ -59,7 +59,7 @@ handle_input_locally = false
 physics_object_picking = true
 physics_object_picking_sort = true
 sdf_oversize = 0
-size = Vector2i(820, 608)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 script = ExtResource("1_yrb0n")
 
