@@ -1,7 +1,8 @@
 extends Node
 
 class_name Difficulty
-
+var maxHP
+var currentHP
 var card = preload("res://Scenes/card.tscn")
 #cards that are currently active
 var cards = []
@@ -22,10 +23,6 @@ func spawnCards(width,height, rows, columns, size):
 		for y in range(columns):
 			if card:
 				var c = card.instantiate()
-				#(width+20)+(576-(width*columns+width/2)-50
-				#var pos = Vector2(x*(width+20)+576-(width*rows/2),(324-height*(rows-1))+y*(height+20))
-				print(width)
-				print(rows)
 				var pos = Vector2(x*(width+20)+576-(width*rows/2)-(20*rows/2),y*(height+20)+324-(height*columns/2)-(20*columns/2))
 				c.CardClicked.connect(_on_card_click)
 				add_child(c)
@@ -70,6 +67,7 @@ func _on_max_cards_flipped():
 		await get_tree().create_timer(0.5).timeout
 		for c in cards:
 			c.flipDown()
+		NotMatched.emit(10)
 		cards.clear()
 		flipCount=0
 		setAllCanFlip(true)

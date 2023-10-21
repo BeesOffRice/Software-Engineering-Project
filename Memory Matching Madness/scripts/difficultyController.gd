@@ -9,6 +9,7 @@ func _ready():
 			levels[child.name.to_lower()] = child
 			self.remove_child(child)
 	setLevel("normal")
+	levels["normal"].NotMatched.connect(_on_not_matched)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -16,3 +17,7 @@ func _process(delta):
 
 func setLevel(lvlName):
 	self.add_child(levels[lvlName])
+	self.add_child(levels["healthbar"])
+
+func _on_not_matched(value):
+	$HealthBar.value = $HealthBar.value - value
