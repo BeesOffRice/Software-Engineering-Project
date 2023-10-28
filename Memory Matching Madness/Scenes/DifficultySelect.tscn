@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgyst8x7vjfvk"]
+
+[ext_resource type="Theme" uid="uid://daiaoav5l0g38" path="res://Theme.tres" id="1_ooecm"]
+[ext_resource type="Script" path="res://scripts/DifficultySelect.gd" id="2_h31c2"]
+
+[sub_resource type="GDScript" id="GDScript_hki1m"]
+script/source = "extends VBoxContainer
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="DifficultySelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ooecm")
+script = ExtResource("2_h31c2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 21
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="DifficultySelectLabel" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select a Difficulty"
+
+[node name="Difficulties" type="VBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+script = SubResource("GDScript_hki1m")
+
+[node name="Easy" type="Button" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties"]
+layout_mode = 2
+text = "Easy"
+
+[node name="Normal" type="Button" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties"]
+layout_mode = 2
+text = "Normal"
+
+[node name="Hard" type="Button" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties"]
+layout_mode = 2
+text = "Hard"
+
+[node name="DifficultyDisplay" type="ColorRect" parent="ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties/Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties/Hard" to="." method="_on_hard_pressed"]

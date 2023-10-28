@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cufd7ocxlkf26"]
+[gd_scene load_steps=3 format=3 uid="uid://cufd7ocxlkf26"]
 
 [ext_resource type="Theme" uid="uid://daiaoav5l0g38" path="res://Theme.tres" id="1_gwk8k"]
+[ext_resource type="Script" path="res://scripts/Button.gd" id="2_dvx67"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -47,3 +48,6 @@ size_flags_vertical = 2
 theme = ExtResource("1_gwk8k")
 text = "Start
 "
+script = ExtResource("2_dvx67")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="MarginContainer/VBoxContainer/Button" method="_on_pressed"]

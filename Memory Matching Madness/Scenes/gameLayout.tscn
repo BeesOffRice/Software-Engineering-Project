@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bblpfhfrebts8"]
+[gd_scene load_steps=3 format=3 uid="uid://dnxmhfippaqwu"]
 
 [ext_resource type="PackedScene" uid="uid://ncevpsmf256n" path="res://Scenes/difficulty.tscn" id="1_3g372"]
 [ext_resource type="Script" path="res://scripts/SubViewport.gd" id="1_yrb0n"]

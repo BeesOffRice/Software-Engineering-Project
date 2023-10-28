@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds2usnkohbsav"]
+
+[ext_resource type="Theme" uid="uid://daiaoav5l0g38" path="res://Theme.tres" id="1_er3t3"]
+[ext_resource type="Script" path="res://scripts/gameOver.gd" id="1_tvl7m"]
+
+[node name="Game Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvl7m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 23
+
+[node name="GameOverLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_er3t3")
+theme_override_font_sizes/font_size = 200
+text = "Game over"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GameResultLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_er3t3")
+text = "You Lose"
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="Restart" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_er3t3")
+text = "Start Over?"
+
+[node name="Main Menu" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_er3t3")
+text = "Main menu"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Buttons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Buttons/Main Menu" to="." method="_on_main_menu_pressed"]

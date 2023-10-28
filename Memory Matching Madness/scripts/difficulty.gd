@@ -13,6 +13,7 @@ var score=0
 
 var cardValues = []
 
+signal GameOver
 signal NotMatched
 signal MaxCardsFlipped
 
@@ -84,4 +85,4 @@ func checkMatch():
 #checks if there are no cards left
 func checkWin():
 	if get_child_count()==0:
-		print("you win")
+		GameOver.emit()

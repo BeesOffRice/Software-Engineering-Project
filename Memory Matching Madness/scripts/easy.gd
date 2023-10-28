@@ -5,7 +5,7 @@ func _ready():
 	cardValues = [Color.RED,Color.YELLOW,Color.BLUE]
 	MaxCardsFlipped.connect(_on_max_cards_flipped)
 	print("easy")
-	spawnCards(200,280, 3 ,2, 5)
+	spawnCards(200,280, 3 ,2, 5) 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
