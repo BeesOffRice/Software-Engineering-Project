@@ -5,6 +5,8 @@ extends Difficulty
 func _ready():
 	cardValues = [Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PURPLE,
 	 Color.ORANGE, Color.PINK, Color.SADDLE_BROWN, Color.IVORY, Color.GRAY]
+	maxHP=30
+	currentHP=maxHP
 	
 	MaxCardsFlipped.connect(_on_max_cards_flipped)
 	spawnCards(80 ,112 , 6, 4, 2)
@@ -12,4 +14,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	checkWin()

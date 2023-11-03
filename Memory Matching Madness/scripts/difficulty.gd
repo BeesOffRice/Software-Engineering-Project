@@ -68,7 +68,7 @@ func _on_max_cards_flipped():
 		await get_tree().create_timer(0.5).timeout
 		for c in cards:
 			c.flipDown()
-		NotMatched.emit(10)
+		NotMatched.emit(self,10)
 		cards.clear()
 		flipCount=0
 		setAllCanFlip(true)
@@ -85,4 +85,4 @@ func checkMatch():
 #checks if there are no cards left
 func checkWin():
 	if get_child_count()==0:
-		GameOver.emit()
+		GameOver.emit("You win")

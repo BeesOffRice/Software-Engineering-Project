@@ -15,12 +15,12 @@ func changeToGameScene(difficulty):
 	SwitchScene.emit(difficulty)
 
 func _on_easy_pressed():
-	changeToGameScene("GameLevel")
+	changeToGameScene("Easy")
 
 
 func _on_normal_pressed():
-	changeToGameScene("GameLevel")
+	changeToGameScene("Normal")
 
 
 func _on_hard_pressed():
-	changeToGameScene("GameLevel")
+	changeToGameScene("Hard")

@@ -1,10 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://ncevpsmf256n"]
+[gd_scene load_steps=9 format=3 uid="uid://ncevpsmf256n"]
 
 [ext_resource type="Script" path="res://scripts/easy.gd" id="1_3wn7g"]
 [ext_resource type="Script" path="res://scripts/difficultyController.gd" id="1_a0yc5"]
 [ext_resource type="Script" path="res://normal.gd" id="3_84bv2"]
 [ext_resource type="Script" path="res://scripts/hard.gd" id="4_so11y"]
 [ext_resource type="PackedScene" uid="uid://bv1xyji1r01xl" path="res://Scenes/HealthBar.tscn" id="5_rrloi"]
+[ext_resource type="Theme" uid="uid://daiaoav5l0g38" path="res://Theme.tres" id="6_7xdxo"]
+[ext_resource type="Script" path="res://scripts/HardTimer.gd" id="6_mcgrc"]
+
+[sub_resource type="GDScript" id="GDScript_q0h8r"]
+script/source = "extends VBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_home_btn_pressed():
+	pass # Replace with function body.
+
+
+func _on_settings_btn_pressed():
+	pass # Replace with function body.
+"
 
 [node name="Difficulty" type="Node"]
 script = ExtResource("1_a0yc5")
@@ -38,3 +62,41 @@ offset_top = -12.216
 offset_right = 219.5
 offset_bottom = 14.784
 grow_horizontal = 2
+
+[node name="HardTimer" type="Timer" parent="."]
+wait_time = 300.0
+one_shot = true
+script = ExtResource("6_mcgrc")
+
+[node name="HardTimerDisplay" type="Label" parent="HardTimer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme = ExtResource("6_7xdxo")
+horizontal_alignment = 1
+
+[node name="GameUIButtons" type="VBoxContainer" parent="."]
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 196.0
+offset_bottom = 233.0
+scale = Vector2(0.560816, 0.879209)
+theme = ExtResource("6_7xdxo")
+script = SubResource("GDScript_q0h8r")
+
+[node name="HomeBtn" type="Button" parent="GameUIButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Home"
+
+[node name="SettingsBtn" type="Button" parent="GameUIButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+
+[connection signal="timeout" from="HardTimer" to="." method="_on_hard_timer_timeout"]
+[connection signal="pressed" from="GameUIButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
+[connection signal="pressed" from="GameUIButtons/SettingsBtn" to="." method="_on_settings_btn_pressed"]

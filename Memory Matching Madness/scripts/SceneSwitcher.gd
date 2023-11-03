@@ -21,16 +21,11 @@ func _on_scene_switch(scene):
 			newScene.SwitchScene.connect(_on_scene_switch)
 			currentScene.queue_free()
 			currentScene = newScene
-		"GameLevel":
-			newScene = load("res://Scenes/difficulty.tscn").instantiate()
-			add_child(newScene)
-			newScene.SwitchScene.connect(_on_scene_switch)
-			currentScene.queue_free()
-			currentScene = newScene
 		"GameOver":
 			newScene = load("res://Scenes/game_over.tscn").instantiate()
 			add_child(newScene)
 			newScene.SwitchScene.connect(_on_scene_switch)
+			newScene.setGameResultLabel(currentScene.gameResults)
 			currentScene.queue_free()
 			currentScene = newScene
 		"MainMenu":
@@ -39,3 +34,27 @@ func _on_scene_switch(scene):
 			newScene.SwitchScene.connect(_on_scene_switch)
 			currentScene.queue_free()
 			currentScene = newScene
+		"Easy":
+			newScene = load("res://Scenes/difficulty.tscn").instantiate()
+			add_child(newScene)
+			newScene.SwitchScene.connect(_on_scene_switch)
+			currentScene.queue_free()
+			currentScene = newScene
+			currentScene.setLevel("easy")
+		"Normal":
+			newScene = load("res://Scenes/difficulty.tscn").instantiate()
+			add_child(newScene)
+			newScene.SwitchScene.connect(_on_scene_switch)
+			currentScene.queue_free()
+			currentScene = newScene
+			currentScene.setLevel("normal")
+		"Hard":
+			newScene = load("res://Scenes/difficulty.tscn").instantiate()
+			add_child(newScene)
+			newScene.SwitchScene.connect(_on_scene_switch)
+			currentScene.queue_free()
+			currentScene = newScene
+			currentScene.setLevel("hard")
+		"Settings":
+			#TODO implement a settings scene
+			pass
