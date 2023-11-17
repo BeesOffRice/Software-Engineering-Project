@@ -2,8 +2,8 @@ extends Area2D
 signal CardClicked
 
 var isFlipped: bool = false
-@export var cardValue: Color  
-var cardBack: Color = Color(Color.BLACK);
+@export var cardValue: Texture2D  
+var cardBack: Texture2D = Textures.card_back;
 var isMatched: bool = false;
 var canFlip: bool = true;
 # Called when the node enters the scene tree for the first time.

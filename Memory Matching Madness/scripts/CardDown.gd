@@ -3,10 +3,10 @@ extends CardState
 class_name CardDown
 
 @export var card: Area2D
-@export var colorDisplay:ColorRect
+@export var colorDisplay:TextureRect
 
 func setCardValues():
-	colorDisplay.set_color(card.cardBack);
+	colorDisplay.texture = card.cardBack;
 	card.setFlipped(false);
 	
 	

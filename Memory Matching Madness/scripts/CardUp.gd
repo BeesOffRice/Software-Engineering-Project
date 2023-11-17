@@ -1,11 +1,11 @@
 extends CardState
 class_name CardUp
 @export var card :Area2D
-@export var cardDisplay:ColorRect
+@export var cardDisplay:TextureRect
 signal Matched
 
 func setCardValues():
-	cardDisplay.set_color(card.cardValue);
+	cardDisplay.texture = card.cardValue;
 	card.setFlipped(true);
 	card.setClickable(false);
 	

@@ -40,7 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.756863, 0.490196, 0.576471, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="easy" type="Node2D" parent="."]
 script = ExtResource("1_3wn7g")

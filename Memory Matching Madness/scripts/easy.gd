@@ -2,7 +2,7 @@ extends Difficulty
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
-	cardValues = [Color.RED,Color.YELLOW,Color.BLUE]
+	cardValues = Textures.easyText
 	MaxCardsFlipped.connect(_on_max_cards_flipped)
 	print("easy")
 	spawnCards(200,280, 3 ,2, 5) 

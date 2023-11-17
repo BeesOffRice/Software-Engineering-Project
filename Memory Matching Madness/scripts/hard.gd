@@ -3,8 +3,7 @@ extends Difficulty
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cardValues = [Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PURPLE,
-	 Color.ORANGE, Color.PINK, Color.SADDLE_BROWN, Color.IVORY, Color.GRAY]
+	cardValues = Textures.easyText
 	maxHP=30
 	currentHP=maxHP
 	

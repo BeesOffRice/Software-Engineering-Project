@@ -2,7 +2,7 @@ extends Difficulty
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cardValues = [Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PURPLE]
+	cardValues = Textures.normalText
 	MaxCardsFlipped.connect(_on_max_cards_flipped)
 	maxHP = 50
 	currentHP = maxHP
