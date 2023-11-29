@@ -3,7 +3,7 @@ extends Node
 #This file loads all card resources
 
 #card back
-var card_back = load("res://Assets/Card Designs/memory_matching_madness_card_back1.jpg")
+var card_back = load("res://Assets/Card Designs/card_back.png")
 
 #easy lvl
 var easyText = [load("res://Assets/Card Designs/1. Easy (200x280)/sunset1.png"), 
@@ -31,4 +31,11 @@ var hardText = [
 	load("res://Assets/Card Designs/3. Hard (80x112)/coast2.png"),
 	load("res://Assets/Card Designs/3. Hard (80x112)/interior1.png"),
 	load("res://Assets/Card Designs/3. Hard (80x112)/interior2.png")
+]
+
+#difficulty displays
+var difficultyDisplay=[
+	load("res://Assets/difficulty_displays/easy_difficulty_display.png"),
+	load("res://Assets/difficulty_displays/normal_difficulty_display.png"),
+	load("res://Assets/difficulty_displays/hard_difficulty_display.png")
 ]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgyst8x7vjfvk"]
+[gd_scene load_steps=7 format=3 uid="uid://dgyst8x7vjfvk"]
 
 [ext_resource type="Theme" uid="uid://daiaoav5l0g38" path="res://Theme.tres" id="1_ooecm"]
 [ext_resource type="Script" path="res://scripts/DifficultySelect.gd" id="2_h31c2"]
+[ext_resource type="Texture2D" uid="uid://c464wmumdfdjf" path="res://Assets/difficulty_displays/easy_difficulty_display.png" id="3_swgk6"]
 
 [sub_resource type="GDScript" id="GDScript_hki1m"]
 script/source = "extends VBoxContainer
@@ -18,7 +19,14 @@ func _process(delta):
 	pass
 "
 
-[node name="DifficultySelect" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wc82"]
+bg_color = Color(0.894118, 0.894118, 0.894118, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fy7kk"]
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
+[node name="DifficultySelect" type="Control" node_paths=PackedStringArray("display", "description")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +35,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ooecm")
 script = ExtResource("2_h31c2")
+display = NodePath("ColorRect/MarginContainer/HBoxContainer/DifficultyPreviewContainer/DifficultyDisplay")
+description = NodePath("ColorRect/MarginContainer/HBoxContainer/DifficultyPreviewContainer/Panel/DifficultyDescription")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -78,10 +88,44 @@ text = "Normal"
 layout_mode = 2
 text = "Hard"
 
-[node name="DifficultyDisplay" type="ColorRect" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="DifficultyPreviewContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="DifficultyDisplay" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/DifficultyPreviewContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.7
+texture = ExtResource("3_swgk6")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="ColorRect/MarginContainer/HBoxContainer/DifficultyPreviewContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7wc82")
+
+[node name="DifficultyDescription" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/DifficultyPreviewContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 38
+text = "For beginners, it's the bunny hill!
+*Unlimited Time
+*Unlimited Life
+*Limited Card Set - 6 Cards"
+label_settings = SubResource("LabelSettings_fy7kk")
+horizontal_alignment = 1
+autowrap_mode = 2
+text_direction = 1
+
+[connection signal="mouse_entered" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties/Easy" to="." method="_on_easy_mouse_entered"]
 [connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties/Easy" to="." method="_on_easy_pressed"]
+[connection signal="mouse_entered" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties/Normal" to="." method="_on_normal_mouse_entered"]
 [connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties/Normal" to="." method="_on_normal_pressed"]
+[connection signal="mouse_entered" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties/Hard" to="." method="_on_hard_mouse_entered"]
 [connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Difficulties/Hard" to="." method="_on_hard_pressed"]

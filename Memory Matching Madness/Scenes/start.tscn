@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cufd7ocxlkf26"]
+[gd_scene load_steps=4 format=3 uid="uid://cufd7ocxlkf26"]
 
+[ext_resource type="Texture2D" uid="uid://fab1s6cuanak" path="res://Assets/background.png" id="1_1gqwh"]
 [ext_resource type="Theme" uid="uid://daiaoav5l0g38" path="res://Theme.tres" id="1_gwk8k"]
 [ext_resource type="Script" path="res://scripts/Button.gd" id="2_dvx67"]
 
@@ -11,14 +12,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.00392157, 0.0392157, 0.141176, 1)
+texture = ExtResource("1_1gqwh")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -46,7 +47,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 theme = ExtResource("1_gwk8k")
-text = "Start
+text = "START
 "
 script = ExtResource("2_dvx67")
 

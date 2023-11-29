@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ncevpsmf256n"]
+[gd_scene load_steps=10 format=3 uid="uid://ncevpsmf256n"]
 
 [ext_resource type="Script" path="res://scripts/easy.gd" id="1_3wn7g"]
 [ext_resource type="Script" path="res://scripts/difficultyController.gd" id="1_a0yc5"]
+[ext_resource type="Texture2D" uid="uid://fab1s6cuanak" path="res://Assets/background.png" id="2_hrepc"]
 [ext_resource type="Script" path="res://normal.gd" id="3_84bv2"]
 [ext_resource type="Script" path="res://scripts/hard.gd" id="4_so11y"]
 [ext_resource type="PackedScene" uid="uid://bv1xyji1r01xl" path="res://Scenes/HealthBar.tscn" id="5_rrloi"]
@@ -33,14 +34,14 @@ func _on_settings_btn_pressed():
 [node name="Difficulty" type="Node"]
 script = ExtResource("1_a0yc5")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("2_hrepc")
 
 [node name="easy" type="Node2D" parent="."]
 script = ExtResource("1_3wn7g")
@@ -85,17 +86,20 @@ offset_right = 196.0
 offset_bottom = 233.0
 scale = Vector2(0.560816, 0.879209)
 theme = ExtResource("6_7xdxo")
+theme_override_constants/separation = 22
 script = SubResource("GDScript_q0h8r")
 
 [node name="HomeBtn" type="Button" parent="GameUIButtons"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Home"
+theme_override_font_sizes/font_size = 75
+text = "HOME"
 
 [node name="SettingsBtn" type="Button" parent="GameUIButtons"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Settings"
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
 
 [connection signal="timeout" from="HardTimer" to="." method="_on_hard_timer_timeout"]
 [connection signal="pressed" from="GameUIButtons/HomeBtn" to="." method="_on_home_btn_pressed"]

@@ -65,12 +65,12 @@ theme_override_constants/separation = 20
 [node name="Restart" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Buttons"]
 layout_mode = 2
 theme = ExtResource("1_er3t3")
-text = "Start Over?"
+text = "START OVER"
 
 [node name="Main Menu" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Buttons"]
 layout_mode = 2
 theme = ExtResource("1_er3t3")
-text = "Main menu"
+text = "MAIN MENU"
 
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Buttons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Buttons/Main Menu" to="." method="_on_main_menu_pressed"]
