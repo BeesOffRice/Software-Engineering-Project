@@ -55,6 +55,9 @@ func _on_scene_switch(scene):
 			currentScene.queue_free()
 			currentScene = newScene
 			currentScene.setLevel("hard")
-		"Settings":
-			#TODO implement a settings scene
-			pass
+		"HowToPlay":
+			newScene = load("res://Scenes/HowToPlay.tscn").instantiate()
+			add_child(newScene)
+			newScene.SwitchScene.connect(_on_scene_switch)
+			currentScene.queue_free()
+			currentScene = newScene

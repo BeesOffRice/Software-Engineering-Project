@@ -1,0 +1,121 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf251x3jljtha"]
+
+[ext_resource type="Script" path="res://scripts/SettingsPage.gd" id="1_2gy06"]
+[ext_resource type="FontFile" uid="uid://k0qx5ptaveo4" path="res://Assets/VT323-Regular.ttf" id="1_xkorb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r56j3"]
+bg_color = Color(0.933333, 0.843137, 0.631373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.921569, 0.552941, 0.27451, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2gga"]
+bg_color = Color(0.921569, 0.552941, 0.27451, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.921569, 0.552941, 0.27451, 0.415686)
+
+[node name="SettingsPage" type="Control" node_paths=PackedStringArray("healthOpt", "cardOpt")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_2gy06")
+healthOpt = NodePath("MarginContainer/SettingsContainer/Option Margin/OptionsContainer/HealthBar")
+cardOpt = NodePath("MarginContainer/SettingsContainer/Option Margin/OptionsContainer/CardCount")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1287, 154)
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 50
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r56j3")
+
+[node name="SettingsContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="SettingsTitle" type="Label" parent="MarginContainer/SettingsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xkorb")
+theme_override_font_sizes/font_size = 114
+text = "Settings"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/SettingsContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_m2gga")
+
+[node name="Option Margin" type="MarginContainer" parent="MarginContainer/SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/SettingsContainer/Option Margin"]
+layout_mode = 2
+color = Color(0.921569, 0.552941, 0.27451, 0.415686)
+
+[node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer/SettingsContainer/Option Margin"]
+layout_mode = 2
+
+[node name="HealthBar" type="CheckButton" parent="MarginContainer/SettingsContainer/Option Margin/OptionsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xkorb")
+theme_override_font_sizes/font_size = 40
+text = "View HealthBar"
+
+[node name="CardCount" type="CheckButton" parent="MarginContainer/SettingsContainer/Option Margin/OptionsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xkorb")
+theme_override_font_sizes/font_size = 40
+text = "View Cards Matched"
+
+[node name="CloseSettingsBtn" type="Button" parent="MarginContainer/SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_xkorb")
+theme_override_font_sizes/font_size = 50
+text = "Close Settings
+"
+
+[connection signal="pressed" from="MarginContainer/SettingsContainer/CloseSettingsBtn" to="." method="_on_close_settings_btn_pressed"]

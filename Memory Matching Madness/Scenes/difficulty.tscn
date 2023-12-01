@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ncevpsmf256n"]
+[gd_scene load_steps=13 format=3 uid="uid://ncevpsmf256n"]
 
 [ext_resource type="Script" path="res://scripts/easy.gd" id="1_3wn7g"]
 [ext_resource type="Script" path="res://scripts/difficultyController.gd" id="1_a0yc5"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bv1xyji1r01xl" path="res://Scenes/HealthBar.tscn" id="5_rrloi"]
 [ext_resource type="Theme" uid="uid://daiaoav5l0g38" path="res://Theme.tres" id="6_7xdxo"]
 [ext_resource type="Script" path="res://scripts/HardTimer.gd" id="6_mcgrc"]
+[ext_resource type="PackedScene" uid="uid://boj8kyi0vdy1n" path="res://Scenes/home_alert.tscn" id="9_v7y3y"]
+[ext_resource type="PackedScene" uid="uid://cf251x3jljtha" path="res://Scenes/SettingsPage.tscn" id="10_dcqou"]
+[ext_resource type="Script" path="res://scripts/CardCount.gd" id="11_1mp3q"]
 
 [sub_resource type="GDScript" id="GDScript_q0h8r"]
 script/source = "extends VBoxContainer
@@ -101,6 +104,38 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 text = "SETTINGS"
 
+[node name="HomeAlert" parent="." instance=ExtResource("9_v7y3y")]
+visible = false
+
+[node name="SettingsPage" parent="." instance=ExtResource("10_dcqou")]
+pivot_offset = Vector2(-713, 309)
+
+[node name="CardCount" type="HBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = -53.0
+offset_right = -9.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("11_1mp3q")
+
+[node name="CardCountLabel" type="Label" parent="CardCount"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Score:"
+
+[node name="ScoreLabel" type="Label" parent="CardCount"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+
 [connection signal="timeout" from="HardTimer" to="." method="_on_hard_timer_timeout"]
 [connection signal="pressed" from="GameUIButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
 [connection signal="pressed" from="GameUIButtons/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="AlertBtnPress" from="HomeAlert" to="." method="_on_home_alert_alert_btn_press"]
+[connection signal="SettingsBtnPress" from="SettingsPage" to="." method="_on_settings_page_settings_btn_press"]

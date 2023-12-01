@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Textures="*res://scripts/Textures.gd"
+Settings="*res://scripts/Settings.gd"
+
+[display]
+
+window/subwindows/embed_subwindows=false
 
 [rendering]
 

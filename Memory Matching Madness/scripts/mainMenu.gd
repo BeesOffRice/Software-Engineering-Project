@@ -14,3 +14,16 @@ func _process(delta):
 
 func _on_new_game_pressed():
 	SwitchScene.emit("DifficultySelect")
+
+
+func _on_settings_pressed():
+	get_tree().paused=true
+	$SettingsPage.show()
+
+
+func _on_settings_page_settings_btn_press():
+	get_tree().paused=false
+
+
+func _on_how_to_play_pressed():
+	SwitchScene.emit("HowToPlay")

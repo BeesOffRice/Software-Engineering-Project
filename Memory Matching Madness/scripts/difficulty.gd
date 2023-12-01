@@ -1,3 +1,4 @@
+#This class handles the game mechanics
 extends Node
 
 class_name Difficulty
@@ -15,6 +16,7 @@ var cardValues = []
 
 signal GameOver
 signal NotMatched
+signal ScoreUpdated
 signal MaxCardsFlipped
 
 #spawns all of the cards in
@@ -56,6 +58,7 @@ func _on_max_cards_flipped():
 	setAllCanFlip(false)
 	if checkMatch():
 		score+=1
+		ScoreUpdated.emit(score)
 		#destroys cards and resets the flipped counter
 		await get_tree().create_timer(0.5).timeout
 		for c in cards:
