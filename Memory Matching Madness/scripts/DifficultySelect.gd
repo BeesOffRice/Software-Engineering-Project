@@ -48,6 +48,6 @@ func _on_hard_mouse_entered():
 	display.texture = Textures.difficultyDisplay[2]
 	description.text = "The most difficult challenge, not for the faint of heart!
 	*Limited Time - 5 Minutes
-	*Limited Life - 30 Health
+	*Limited Life - 100 Health
 	*Limited Card Set - 20 Cards"
 	

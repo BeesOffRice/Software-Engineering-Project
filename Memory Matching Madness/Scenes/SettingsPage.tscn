@@ -107,7 +107,7 @@ theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xkorb")
 theme_override_font_sizes/font_size = 40
-text = "View Cards Matched"
+text = "Toggle Score Display"
 
 [node name="CloseSettingsBtn" type="Button" parent="MarginContainer/SettingsContainer"]
 layout_mode = 2
